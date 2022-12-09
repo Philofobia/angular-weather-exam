@@ -1,0 +1,49 @@
+<h1 class="text-center my-3">THE WEATHER API</h1>
+<div class="input-group mt-3">
+  <input
+    type="number"
+    min="1"
+    max="999"
+    class="form-control rounded"
+    placeholder="Latitude of the location in decimal degrees"
+    aria-label="Search"
+    aria-describedby="search-addon"
+    name="latitude"
+    id="latitude"
+    [(ngModel)]="jsonIn.latitude"
+  />
+  <input
+    type="number"
+    min="1"
+    max="999"
+    class="form-control rounded mx-2"
+    placeholder="Longitude of the location in decimal degrees"
+    aria-label="Search"
+    aria-describedby="search-addon"
+    name="longitude"
+    id="longitude"
+    [(ngModel)]="jsonIn.longitude"
+  />
+  <button
+    type="button"
+    class="btn btn-outline-primary rounded"
+    (click)="goToDetails()"
+  >
+    SEARCH
+  </button>
+</div>
+<hr />
+<ul class="list-group mb-5">
+  <li class="list-group-item">
+    <a [routerLink]="'/details/41.902782/12.496366'">Rome</a>
+  </li>
+  <li class="list-group-item">
+    <a [routerLink]="'/details/40.730610/-73.935242'">New York</a>
+  </li>
+  <li class="list-group-item">
+    <a [routerLink]="'/details/39.916668/16.383331'">Beijing</a>
+  </li>
+  <li class="list-group-item">
+    <a [routerLink]="'/details/35.652832/139.839478'">Tokyo</a>
+  </li>
+</ul>

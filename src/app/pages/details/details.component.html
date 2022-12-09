@@ -1,0 +1,61 @@
+<button type="button" class="btn btn-primary position-absolute top-5" (click)="back()">← Go back</button>
+<div *ngIf="!searchedSun || !searchedWeather">
+  <span class="text-center">ERRORE!</span>
+</div>
+<div *ngIf="searchedSun && searchedWeather" class="my-5">
+  <h1 class="text-center my-3">METEO DATA</h1>
+  <h3 class="text-center my-3 mb-5">{{ time | date:"medium"}}</h3>
+  <div class="row">
+    <h2 class="col text-center">LATITUDE: {{ latitude }}</h2>
+    <h2 class="col text-center">LONGITUDE: {{ longitude }}</h2>
+  </div>
+  <div class="row">
+    <h2 class="col text-center">
+      <img src="assets/sunrise.png" style="width: 150px" />
+    </h2>
+    <h2 class="col text-center">
+      <img src="assets/sunset.png" style="width: 150px" />
+    </h2>
+  </div>
+  <table class="table text-center mb-5">
+    <tr>
+      <th class="col">sunrise - sunset</th>
+      <th class="col">first light - last light</th>
+      <th class="col">dawn - dusk</th>
+    </tr>
+    <tr>
+      <td class="col">
+        <span>{{ searchedSun.sunrise }} - {{ searchedSun.sunset }}</span>
+      </td>
+      <td class="col">
+        <span
+          >{{ searchedSun.first_light }} - {{ searchedSun.last_light }}</span
+        >
+      </td>
+      <td class="col">
+        <span>{{ searchedSun.dawn }} - {{ searchedSun.dusk }}</span>
+      </td>
+    </tr>
+  </table>
+  <hr />
+  <table class="table table-striped my-5 text-center">
+    <thead class="bg-info">
+      <tr>
+        <th scope="col">Time</th>
+        <th scope="col">Weather</th>
+        <th scope="col">Temperature / Humidity</th>
+        <th scope="col">Wind</th>
+        <th scope="col">Weather Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let weather of searchedWeather" class="align-middle">
+        <th scope="row">{{ weather.time | date : "medium" }}</th>
+        <td>{{ weather.wthDescription }}</td>
+        <td>{{ weather.temperature }}° - {{ weather.humidityPerc }}</td>
+        <td>{{ weather.windSpeedStr }} - {{ weather.windDirection }}</td>
+        <td><img [src]="weather.image" /></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
